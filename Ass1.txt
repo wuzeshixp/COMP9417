@@ -1,0 +1,47 @@
+
+
+# Question 1
+1a) 1.From the result in q1.out, we can find that the error changes aren't dependent on the proportion of training data seen by the algorithm,
+    because overall the 8 datasets, no matter how much percentage of training data we are learning from, we got the same results, either highter
+        or lower in each dataset.
+
+    2.There are some variation both in differet datasets and algorithms, for example, when we using IBK algorithm, we can find the result of 'hypothyroid'
+        dataset is different from that in the other 7 datasets. Furthermore, from the results producing of using the classifier (5)(configured as asked), we
+    can find that there are 6 results are lower than the baseline by algorithm IBk, while 1 more is lower than the baseline by algorithm J48
+
+1b) 1.                  Mean error reduction relative to default
+            Algorithm          after 10% training         after 100% training
+            IBk                      34.8%                      60.1%
+            J48                      49.9%                      72.3%
+
+        2. The error reduction is larger than what I expected when seeing 10% of the training data, since the proportion of learning data is too small
+        to get a lower error. However, the error reduction is almost the same as what I expected when seeing 100% of the training data, the training
+                data is large enough to classify the data.
+
+    3. The effect is more pronounced for IBk. Since the baseline error is from ZeroR, which use the mean of the datas in each class, the IBk is closer to
+           the algorithm of ZeroR. Firstly, we find the center data of each class, and then classify the traning data decided by the KNN(K = 1 here) distance.
+           Therefore, the results is closer to the baseline.
+
+# Question 2
+2a) From the error results on these 4 datasets, as noise is increased, the error rate is declined when we added 50% noise. Therefore, the learning has
+    managed to avoid overfftting at low, medium and high levels of added noise. Because we set CVParameters to be `M 2 30 5', that is the pre-pruning step.
+
+2b) Of course the parameter selection helps with overfftting avoidance. From the results of (3) and (5) with ans without parameter optimation respectively,
+    adding the same percent of 50% noises, the error rates abtained by J48(5) are all higher than that in (3) with -C to be `M 2 30 5'.
+
+# Question 3
+3a) From the first two output results, we can find that when the 'median_house_value' variable is transformed by log function, the 'Mean absolute error' and                  50806.1304
+    the 'Root mean squared error' are reduced significantly. However, it seems the transformation has little effection on 'Relative absolute error' and the                  52.9374 %
+    'Root relative squared error', no matter log or squar transformation.
+
+3b) The effection on error due to transformation is reasonable. Since when using 10-fold cross-validation, the original sample is randomly partitioned into
+    10 equal sized subsamples. And a single subsample is retained as the validation data for testing the model, and the remaining 9 subsamples are used as
+        training data. So the transformed variable could be selected as the validation data somehow, resulting in the changes in the errors when we just transform
+        one variable. Simlarly, when we transform all the variables, the errors will maintain to be close to the oringinals.
+
+
+# Question 4
+ One of the characteristics of text classiffcation in general I can find is that in order to have a higher accracy of classiffcation, there are two valid
+ solution, that is dimensionality reduction and feature selection. When we apply the MNB to do the text classiffcation, the precision rate is higher than
+ using the algorithm of NB and J48 since the features are relative to each in fact. For exanmple, the class 'business', most are classified correctily in
+ MNB, However, it is wrongly predict as computers or whatever in J48 and NB. So the relationship among the features contribute to the result of classiffcation.
